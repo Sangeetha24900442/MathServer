@@ -44,7 +44,7 @@ math.html
 <meta name='viewport' content='width=device-width, initial-scale=1'>
 <style type="text/css">
 body {
-    background-color:  #80ced6;
+    background-color:cyan;
 }
 .edge {
     width: 100%;
@@ -57,7 +57,7 @@ body {
     width: 500px;
     min-height: 300px;
     font-size: 20px;
-    background-color: #fefbd8;
+    background-color:pink;
 }
 .formelt {
     color: black;
@@ -75,7 +75,7 @@ h1 {
 <div class="edge">
     <div class="box">
         <h1>Power Calculation</h1>
-        <h3>Sushmtiha Gembunathan (24001544)</h3>
+        <h3>Sangeetha S(24900442)</h3>
         <form method="POST">
             {% csrf_token %}
             <div class="formelt">
@@ -97,8 +97,9 @@ h1 {
 </html>
 
 
-views.py
+views.py 
 
+from django.shortcuts import render
 
 def power(request):
     context = {}
@@ -136,25 +137,25 @@ def power(request):
     return render(request, 'mathapp/math.html', context)
 
 
-  urls.py
+urls.py
 
-  from django.contrib import admin
+from django.contrib import admin
 from django.urls import path
 from mathapp import views  # Updated to match the new app name (mathapp)
 
 urlpatterns = [
     path('admin/', admin.site.urls),
     path('powercalculation/', views.power, name="powercalculation"),  # Updated URL for power calculation
-    path('', views.power, name="powercalculationroot")  # Root URL redirects to power calculation
+    #path('', views.power, name="powercalculationroot")  # Root URL redirects to power calculation
 ]
 ```
  
 
 ## SERVER SIDE PROCESSING:
-
+![alt text](<Screenshot 2024-12-09 085328.png>)
 
 ## HOMEPAGE:
-![alt text](<Screenshot 2024-12-08 165309.png>)
+![alt text](<Screenshot 2024-12-09 085305.png>)
 
 
 ## RESULT:

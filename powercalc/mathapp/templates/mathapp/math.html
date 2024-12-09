@@ -1,76 +1,60 @@
+<!DOCTYPE html>
 <html>
 <head>
-    <title>Power Calculation (P = I²R)</title>
-    <style>
-        body {
-            font-family: Arial, sans-serif;
-            background-color: #f0f8ff;
-            text-align: center;
-            padding-top: 50px;
-        }
-        .container {
-            display: inline-block;
-            background-color: #fff;
-            border: 1px solid #ccc;
-            padding: 20px;
-            border-radius: 10px;
-            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
-            max-width: 400px;
-        }
-        input[type="text"] {
-            width: calc(100% - 20px);
-            padding: 10px;
-            margin: 10px 0;
-            border: 1px solid #ccc;
-            border-radius: 5px;
-            font-size: 16px;
-        }
-        input[type="submit"] {
-            background-color: #4caf50;
-            color: white;
-            border: none;
-            padding: 10px 20px;
-            cursor: pointer;
-            border-radius: 5px;
-            font-size: 16px;
-        }
-        input[type="submit"]:hover {
-            background-color: #45a049;
-        }
-        .error {
-            color: red;
-            margin: 10px 0;
-        }
-        .result {
-            color: green;
-            font-weight: bold;
-            margin: 10px 0;
-        }
-    </style>
+<meta charset='utf-8'>
+<meta http-equiv='X-UA-Compatible' content='IE=edge'>
+<title>Power Calculation (P = I²R)</title>
+<meta name='viewport' content='width=device-width, initial-scale=1'>
+<style type="text/css">
+body {
+    background-color:cyan;
+}
+.edge {
+    width: 100%;
+    padding-top: 250px;
+    text-align: center;
+}
+.box {
+    display: inline-block;
+    border: thick double rgb(59, 8, 116);
+    width: 500px;
+    min-height: 300px;
+    font-size: 20px;
+    background-color:pink;
+}
+.formelt {
+    color: black;
+    text-align: center;
+    margin-top: 7px;
+    margin-bottom: 6px;
+}
+h1 {
+    color: black;
+    padding-top: 20px;
+}
+</style>
 </head>
 <body>
-    <div class="container">
+<div class="edge">
+    <div class="box">
         <h1>Power Calculation</h1>
+        <h3>Sangeetha S(24900442)</h3>
         <form method="POST">
             {% csrf_token %}
-            <label for="current">Current (I):</label>
-            <input type="text" id="current" name="current" value="{{ current }}" placeholder="Enter current in amperes">
-            <br>
-            <label for="resistance">Resistance (R):</label>
-            <input type="text" id="resistance" name="resistance" value="{{ resistance }}" placeholder="Enter resistance in ohms">
-            <br>
-            <input type="submit" value="Calculate">
+            <div class="formelt">
+                Current (I): <input type="text" name="current" value="{{current}}"> A<br/>
+            </div>
+            <div class="formelt">
+                Resistance (R): <input type="text" name="resistance" value="{{resistance}}"> Ω<br/>
+            </div>
+            <div class="formelt">
+                <input type="submit" value="Calculate"><br/>
+            </div>
+            <div class="formelt">
+                Power (P): <input type="text" name="power" value="{{power}}"> W<br/>
+            </div>
         </form>
-        
-        <!-- Display Results -->
-        {% if power %}
-            <div class="result">Power (P): {{ power }} watts</div>
-        {% endif %}
-        
-        <!-- Display Errors -->
-        {% if error %}
-            <div class="error">{{ error }}</div>
-        {% endif %}
     </div>
+</div>
 </body>
 </html>

@@ -1,32 +1,36 @@
 from django.shortcuts import render
 
 def power(request):
-    # Default context for rendering the form
-    context = {
-        'current': '0',  # Default input for current
-        'resistance': '0',  # Default input for resistance
-        'power': '0',  # Default calculated power
-    }
-    
-    # Process form submission
-    if request.method == 'POST':
-        # Get user inputs from the form
-        current = request.POST.get('current', '0')
-        resistance = request.POST.get('resistance', '0')
+    context = {}
+    context['power'] = "0"
+    context['current'] = "0"
+    context['resistance'] = "0"
 
+    if request.method == 'POST':
+        print("POST method is used")
+        print('request.POST:', request.POST)
+        
+        current = request.POST.get('current', '0') 
+        resistance = request.POST.get('resistance', '0') 
+        print('current(I) =', current)
+        print('Resistance(R) =', resistance)
+        
         try:
-            # Convert inputs to float
+            # Convert inputs to floats for calculation
             current = float(current)
             resistance = float(resistance)
-
-            # Calculate power: P = I²R
+            
+            # Power calculation: P = I²R
             power = current ** 2 * resistance
-            context['power'] = round(power, 2)  # Add calculated power to context
-
+            context['power'] = power
+            
         except ValueError:
             # Handle invalid input
             context['error'] = "Please enter valid numeric values for current and resistance."
-            print("Received POST data:", request.POST)
+            context['power'] = "0"
+        
+        context['current'] = current
+        context['resistance'] = resistance
+        print('Power(P) =', context['power'])
 
-    
     return render(request, 'mathapp/math.html', context)
